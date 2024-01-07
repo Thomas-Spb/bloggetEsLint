@@ -29,7 +29,7 @@ Text.propTypes = {
   tsize: PropTypes.number,
   dsize: PropTypes.number,
   className: PropTypes.string,
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.array]),
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.array, PropTypes.node]),
   href: PropTypes.string,
   center: PropTypes.bool,
   bold: PropTypes.bool,
