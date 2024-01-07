@@ -151,6 +151,7 @@
     "new-cap": "error",
     "no-array-constructor": "error",
     "no-mixed-spaces-and-tabs": "error",
+    "no-mixed-operators": "off",
     "no-multiple-empty-lines": [
       "error",
       {

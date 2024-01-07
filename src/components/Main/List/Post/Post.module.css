@@ -47,7 +47,7 @@
   transition: color 0.36s ease-in-out;
   outline: 2px solid transparent;
   border-radius: 6px;
-  z-index: 10;
+  z-index: 4;
 }
 
 .delete:hover {
@@ -157,9 +157,9 @@
     height: 25px;
   }
 
-  .linkPost {
+  /* .linkPost {
     font-size: 26px;
-  }
+  } */
   .linkPost:hover {
     color: #cc6633;
   }
@@ -215,9 +215,9 @@
     min-height: 195px;
   }
 
-  .linkPost {
+  /* .linkPost {
     font-size: 32px;
-  }
+  } */
 }
 
 .dn {

@@ -1,5 +1,5 @@
 import Layout from '../Layout';
-import { List } from './List/List';
+import List from './List';
 import Tabs from './Tabs';
 
 export const Main = () => (
