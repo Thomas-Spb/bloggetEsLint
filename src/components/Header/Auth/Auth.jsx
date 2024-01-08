@@ -15,23 +15,33 @@ export const Auth = ({ token, delToken }) => {
         Authorization: `bearer ${token}`,
       },
     })
-      .then(response => response.json())
+      //   .then(response => {
+      //     if (response.status === 200) {
+      //       setAuth({});
+      //     }
+      //   })
+      //   .then(response => response.json())
+      .then(response => {
+        if (response === 401) {
+          return setAuth({});
+        } else {
+          return response.json();
+        }
+      })
       .then(({ name, icon_img: iconImg }) => {
         const img = iconImg.replace(/\?.*$/, '');
         setAuth({ name, img });
       })
       .catch(err => {
-        console.err(err);
+        console.error(err);
         setAuth({});
       });
   }, [token]);
 
-  //   const handleDelToken = () => {
-  //     useEffect(() => {
-  //       delToken = true;
-  //       setAuth({});
-  //     }, [delToken]);
-  //   };
+  const handleDelToken = () => {
+    delToken();
+    setAuth({});
+  };
 
   return (
     <div className={cls.container}>
@@ -43,7 +53,7 @@ export const Auth = ({ token, delToken }) => {
           <button
             className={cls.logout}
             onClick={() => {
-              delToken();
+              handleDelToken();
             }}
           >
             Выйти
