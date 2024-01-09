@@ -7,21 +7,22 @@ import { Content } from './Content/Content';
 import { ReactComponent as DeleteIcon } from './img/delete.svg';
 
 export const Post = ({ postData }) => {
-  const { title, author, ups, date } = postData;
+  const { title, author, ups, created, thumbnail } = postData;
   const handleClick = e => {
     const element = e.target.parentElement.parentElement;
     element.style.display = 'none';
   };
+  console.log(thumbnail);
   return (
     <li className={cls.post}>
       <button className={cls.delete} onClick={e => handleClick(e)}>
         <DeleteIcon />
       </button>
-      <PostImage title={title} />
+      <PostImage title={title} thumbnail={thumbnail} />
       <Content title={title} author={author} />
       <Rating ups={ups} />
-      <time className={cls.date} dateTime={date}>
-        {formatDate(date)}
+      <time className={cls.date} dateTime={created}>
+        {formatDate(created)}
       </time>
     </li>
   );

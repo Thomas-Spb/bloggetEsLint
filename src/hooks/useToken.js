@@ -6,10 +6,11 @@ export const useToken = state => {
 
   useEffect(() => {
     if (location.pathname.includes('/auth')) {
-      const token = new URLSearchParams(location.hash.substring(1)).get('access_token');
+      const token = new URLSearchParams(location.hash.substring(1)).get(
+        'access_token',
+      );
       setToken(token);
     }
-    console.log(auth);
     if (localStorage.getItem('bearer')) {
       setToken(localStorage.getItem('bearer'));
       setAuth(true);

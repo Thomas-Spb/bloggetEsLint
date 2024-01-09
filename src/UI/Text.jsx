@@ -22,8 +22,6 @@ export const Text = props => {
   );
 };
 
-
-// dskjdst
 Text.propTypes = {
   As: PropTypes.string,
   color: PropTypes.string,
