@@ -25,7 +25,12 @@ export const Auth = () => {
       {auth.name ? (
         <>
           <button className={cls.btn} onClick={getOut}>
-            <img className={cls.img} src={auth.img} title={auth.name} alt={auth.name} />
+            <img
+              className={cls.img}
+              src={auth.img}
+              title={auth.name}
+              alt={auth.name}
+            />
           </button>
           {showLogout && (
             <button

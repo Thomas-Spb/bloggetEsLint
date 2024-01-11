@@ -44,7 +44,10 @@ export const Tabs = ({ list, setList }) => {
     <div className={cls.container}>
       {isDropdown && (
         <div className={cls.wrapperBtn}>
-          <button className={cls.btn} onClick={() => setIsDropDownOpen(!isDropDownOpen)}>
+          <button
+            className={cls.btn}
+            onClick={() => setIsDropDownOpen(!isDropDownOpen)}
+          >
             {tab}
             <ArrowIcon width={15} height={15} />
           </button>

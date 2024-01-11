@@ -3,7 +3,19 @@ import PropTypes from 'prop-types';
 import cls from './Text.module.css';
 
 export const Text = props => {
-  const { As = 'span', color = 'black', size, tsize, dsize, className, children, href, center, bold, medium } = props;
+  const {
+    As = 'span',
+    color = 'black',
+    size,
+    tsize,
+    dsize,
+    className,
+    children,
+    href,
+    center,
+    bold,
+    medium,
+  } = props;
 
   const classes = classNames(
     className,
@@ -29,7 +41,12 @@ Text.propTypes = {
   tsize: PropTypes.number,
   dsize: PropTypes.number,
   className: PropTypes.string,
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.array, PropTypes.node]),
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array,
+    PropTypes.node,
+  ]),
   href: PropTypes.string,
   center: PropTypes.bool,
   bold: PropTypes.bool,

@@ -7,7 +7,11 @@ export const authContext = React.createContext({});
 export const AuthContextProvider = ({ children }) => {
   const [auth, clearAuth] = useAuth();
 
-  return <authContext.Provider value={{ auth, clearAuth }}>{children}</authContext.Provider>;
+  return (
+    <authContext.Provider value={{ auth, clearAuth }}>
+      {children}
+    </authContext.Provider>
+  );
 };
 
 AuthContextProvider.propTypes = {
