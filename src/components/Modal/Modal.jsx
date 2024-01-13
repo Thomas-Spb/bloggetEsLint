@@ -5,7 +5,8 @@ import Markdown from 'markdown-to-jsx';
 import ReactDOM from 'react-dom';
 
 export const Modal = ({ title, author, markdown }) => {
-  ReactDOM.createPortal(
+  console.log(markdown);
+  return ReactDOM.createPortal(
     <div className={cls.overlay}>
       <div className={cls.modal}>
         <h2 className={cls.title}>{title}</h2>
@@ -22,7 +23,6 @@ export const Modal = ({ title, author, markdown }) => {
             }}
           >
             {markdown}
-            Тут статья
           </Markdown>
         </div>
         <p className={cls.author}>{author}</p>

@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Modal } from '../../../../Modal/Modal';
 
 export const Content = ({ title, author, markdown }) => {
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <div className={cls.content}>
       <Text As="h2" className={cls.title}>
