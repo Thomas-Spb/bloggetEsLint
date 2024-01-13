@@ -22,7 +22,10 @@ export const useAuth = () => {
       .then(({ name, icon_img: iconImg }) => {
         const img = iconImg.replace(/\?.*$/, '');
         setAuth({ name, img });
+        const homeHref = window.location.href.split('#')[0];
+        window.history.replaceState(null, null, homeHref);
       })
+
       .catch(err => {
         console.error(err);
         setAuth({});
