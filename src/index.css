@@ -4,7 +4,8 @@
   font-family: 'Merriweather Sans';
   font-style: normal;
   font-weight: 400;
-  src: local(''),
+  src:
+    local(''),
     url('fonts/merriweather-sans-v20-latin_cyrillic-ext-regular.woff2')
       format('woff2'),
     /* Chrome 26+, Opera 23+, Firefox 39+ */
@@ -16,7 +17,8 @@
   font-family: 'Merriweather Sans';
   font-style: normal;
   font-weight: 500;
-  src: local(''),
+  src:
+    local(''),
     url('fonts/merriweather-sans-v20-latin_cyrillic-ext-500.woff2')
       format('woff2'),
     /* Chrome 26+, Opera 23+, Firefox 39+ */
@@ -28,7 +30,8 @@
   font-family: 'Merriweather Sans';
   font-style: normal;
   font-weight: 700;
-  src: local(''),
+  src:
+    local(''),
     url('fonts/merriweather-sans-v20-latin_cyrillic-ext-700.woff2')
       format('woff2'),
     /* Chrome 26+, Opera 23+, Firefox 39+ */
@@ -49,6 +52,7 @@
   --greyBF: hsl(0, 0%, 75%);
   --grey99: hsl(0, 0%, 60%);
   --grey66: hsl(0, 0%, 40%);
+  --grey33: hsl(0, 0%, 20%);
 }
 
 html {
@@ -65,14 +69,17 @@ html {
 body {
   min-width: 320px;
   min-height: 100vh;
-  font-family: Merriweather Sans, sans-serif;
+  font-family:
+    Merriweather Sans,
+    sans-serif;
   font-size: 16px;
   font-weight: 400;
   background-color: var(--grayF5);
   color: var(--black);
 }
 
-img {
+img,
+svg {
   max-width: 100%;
   height: auto;
 }
