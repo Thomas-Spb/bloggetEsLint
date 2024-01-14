@@ -13,9 +13,9 @@ export const Post = ({ postData }) => {
     ups,
     created,
     thumbnail,
+    id,
     selftext: markdown,
   } = postData;
-  console.log(postData);
   const handleClick = e => {
     const element = e.target.parentElement.parentElement;
     element.style.display = 'none';
@@ -26,7 +26,7 @@ export const Post = ({ postData }) => {
         <DeleteIcon />
       </button>
       <PostImage title={title} thumbnail={thumbnail} />
-      <Content title={title} author={author} markdown={markdown} />
+      <Content title={title} author={author} markdown={markdown} id={id} />
       <Rating ups={ups} />
       <time className={cls.date} dateTime={created}>
         {formatDate(created)}
