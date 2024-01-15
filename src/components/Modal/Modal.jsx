@@ -65,7 +65,7 @@ export const Modal = ({ id, closeModal }) => {
             {markdown}
           </Markdown>
         </div>
-        <FormComment />
+        {!isLoading && <FormComment />}
         <p className={cls.author}>{author}</p>
         {!isLoading && comments.length > 0 && <Comments comments={comments} />}
         {isLoading && <p>Загружаем данные</p>}
