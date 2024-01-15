@@ -16,16 +16,16 @@ export const Modal = ({ id, closeModal }) => {
   let markdown = 'markdown загрузка...';
 
   let comments = [];
-  if (commentsData) {
+  if (commentsData.length > 0) {
     title = commentsData[0]?.title;
     author = commentsData[0]?.author;
     markdown = commentsData[0]?.selftext;
     comments = commentsData[1];
   }
   //   const closeRef = useRef(null);
-  console.log(commentsData[0]);
-  console.log(title, author, markdown);
-  console.log(comments);
+  //   console.log(commentsData[0]);
+  //   console.log(title, author, markdown);
+  //   console.log(comments);
   const handleClick = e => {
     const target = e.target;
     if (target === overlayRef.current) {
@@ -65,12 +65,11 @@ export const Modal = ({ id, closeModal }) => {
             {markdown}
           </Markdown>
         </div>
+        <FormComment />
         <p className={cls.author}>{author}</p>
-        {!isLoading && <FormComment />}
+        {!isLoading && comments.length > 0 && <Comments comments={comments} />}
         {isLoading && <p>Загружаем данные</p>}
-
-        <Comments comments={comments} />
-
+        {!isLoading && comments.length === 0 && <p>Нет комментариев</p>}
         <button className={cls.close} onClick={() => closeModal()}>
           <CloseIcon />
         </button>
@@ -81,9 +80,6 @@ export const Modal = ({ id, closeModal }) => {
 };
 
 Modal.propTypes = {
-  title: PropTypes.string,
-  author: PropTypes.string,
-  markdown: PropTypes.string,
   closeModal: PropTypes.func,
   id: PropTypes.string,
 };
