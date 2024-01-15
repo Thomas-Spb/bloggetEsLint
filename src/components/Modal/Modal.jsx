@@ -11,20 +11,21 @@ import { useCommentsData } from '../../hooks/useCommentsData';
 export const Modal = ({ id, closeModal }) => {
   const overlayRef = useRef(null);
   const [commentsData, isLoading] = useCommentsData(id);
-  //   let title = 'title загрузка...';
-  //   let author = 'author загрузка...';
-  //   let markdown = 'markdown загрузка...';
+  let title = 'title загрузка...';
+  let author = 'author загрузка...';
+  let markdown = 'markdown загрузка...';
 
   let comments = [];
   if (commentsData) {
-    // title = commentsData[0]?.title;
-    // author = commentsData[0]?.author;
-    // markdown = commentsData[0]?.selftext;
+    title = commentsData[0]?.title;
+    author = commentsData[0]?.author;
+    markdown = commentsData[0]?.selftext;
     comments = commentsData[1];
   }
   //   const closeRef = useRef(null);
-  //   console.log(title);
-  console.log(commentsData);
+  console.log(commentsData[0]);
+  console.log(title, author, markdown);
+  console.log(comments);
   const handleClick = e => {
     const target = e.target;
     if (target === overlayRef.current) {
@@ -48,7 +49,7 @@ export const Modal = ({ id, closeModal }) => {
   return ReactDOM.createPortal(
     <div className={cls.overlay} ref={overlayRef}>
       <div className={cls.modal}>
-        <h2 className={cls.title}>title</h2>
+        <h2 className={cls.title}>{title}</h2>
         <div className={cls.content}>
           <Markdown
             options={{
@@ -61,10 +62,10 @@ export const Modal = ({ id, closeModal }) => {
               },
             }}
           >
-            markdown
+            {markdown}
           </Markdown>
         </div>
-        <p className={cls.author}>author</p>
+        <p className={cls.author}>{author}</p>
         {!isLoading && <FormComment />}
         {isLoading && <p>Загружаем данные</p>}
 
@@ -84,4 +85,5 @@ Modal.propTypes = {
   author: PropTypes.string,
   markdown: PropTypes.string,
   closeModal: PropTypes.func,
+  id: PropTypes.string,
 };
