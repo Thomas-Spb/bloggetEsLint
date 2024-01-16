@@ -11,6 +11,11 @@ import { useCommentsData } from '../../hooks/useCommentsData';
 export const Modal = ({ id, closeModal }) => {
   const overlayRef = useRef(null);
   const [commentsData, isLoading] = useCommentsData(id);
+
+  //   useEffect(() => {
+  //     const [commentsData, isLoading] = useCommentsData(id);
+  //   }, []);
+
   let title = 'title загрузка...';
   let author = 'author загрузка...';
   let markdown = 'markdown загрузка...';

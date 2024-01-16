@@ -1,11 +1,11 @@
-import { useContext, useEffect, useRef, useState } from 'react';
-import { tokenContext } from '../context/tokenContext';
+import { useEffect, useRef, useState } from 'react';
 import { URL_API } from '../api/const';
+import { useSelector } from 'react-redux';
 
 export const useCommentsData = id => {
+  const token = useSelector(state => state.token);
   const [commentsData, setCommentsData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const { token } = useContext(tokenContext);
   const isFetching = useRef(false);
   useEffect(() => {
     if (isFetching.current) return;

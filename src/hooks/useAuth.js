@@ -1,10 +1,12 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { URL_API } from '../api/const';
-import { tokenContext } from '../context/tokenContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { delToken } from '../store/store';
 
 export const useAuth = () => {
+  const token = useSelector(state => state.token);
+  const dispatch = useDispatch;
   const [auth, setAuth] = useState({});
-  const { token, delToken } = useContext(tokenContext);
 
   useEffect(() => {
     if (!token) return;
@@ -29,7 +31,7 @@ export const useAuth = () => {
       .catch(err => {
         console.error(err);
         setAuth({});
-        delToken();
+        dispatch(delToken());
       });
   }, [token]);
 

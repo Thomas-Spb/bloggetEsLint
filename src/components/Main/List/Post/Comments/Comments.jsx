@@ -12,6 +12,7 @@ export const Comments = props => {
     <ul className={cls.list}>
       {comments.map(comment => {
         const { id, body, author, created: date } = comment;
+        console.log(date);
         return (
           <li className={cls.item} key={id}>
             <Text As="h3" className={cls.author} size={18} tsize={22}>
@@ -20,7 +21,7 @@ export const Comments = props => {
             <Text As="p" className={cls.comment} size={14} tsize={18}>
               {body}
             </Text>
-            <time dateTime={date}>{formatDate(date)}</time>
+            {date && <time dateTime={date}>{formatDate(date)}</time>}
           </li>
         );
       })}
