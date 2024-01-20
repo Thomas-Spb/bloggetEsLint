@@ -5,7 +5,7 @@ import { Text } from '../../../UI/Text';
 import { useState, useContext } from 'react';
 import { authContext } from '../../../context/authContext';
 import { useDispatch } from 'react-redux';
-import { delToken } from '../../../store/store';
+import { delToken } from '../../../store/tokenReducer';
 
 export const Auth = () => {
   const [showLogout, setShowLogout] = useState(true);
