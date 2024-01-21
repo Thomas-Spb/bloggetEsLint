@@ -2,14 +2,15 @@ import cls from './Auth.module.css';
 import { ReactComponent as LoginIcon } from './img/login.svg';
 import { urlAuth } from '../../../api/auth';
 import { Text } from '../../../UI/Text';
-import { useState, useContext } from 'react';
-import { authContext } from '../../../context/authContext';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { delToken } from '../../../store/tokenReducer';
+import { useAuth } from '../../../hooks/useAuth';
+import { AuthLoader } from './AuthLoader/AuthLoader';
 
 export const Auth = () => {
   const [showLogout, setShowLogout] = useState(true);
-  const { auth, clearAuth } = useContext(authContext);
+  const [auth, loading, clearAuth] = useAuth();
   const dispatch = useDispatch();
 
   const getOut = () => {
@@ -23,7 +24,9 @@ export const Auth = () => {
 
   return (
     <div className={cls.container}>
-      {auth.name ? (
+      {loading ? (
+        <AuthLoader />
+      ) : auth.name ? (
         <>
           <button className={cls.btn} onClick={getOut}>
             <img
