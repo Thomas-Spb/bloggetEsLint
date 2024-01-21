@@ -4,14 +4,15 @@ import PropTypes from 'prop-types';
 import Markdown from 'markdown-to-jsx';
 import ReactDOM from 'react-dom';
 import { useEffect, useRef } from 'react';
-import { Comments } from '../Main/List/Post/Comments/Comments';
+// import { Comments } from '../Main/List/Post/Comments/Comments';
 import { FormComment } from '../Main/List/Post/FormComment/FormComment';
 import { useCommentsData } from '../../hooks/useCommentsData';
 
 export const Modal = ({ id, closeModal }) => {
   const overlayRef = useRef(null);
-  const [commentsData, isLoading] = useCommentsData(id);
-
+  const commentsData = useCommentsData(id);
+  const loading = true;
+  console.log(commentsData);
   //   useEffect(() => {
   //     const [commentsData, isLoading] = useCommentsData(id);
   //   }, []);
@@ -28,9 +29,9 @@ export const Modal = ({ id, closeModal }) => {
     comments = commentsData[1];
   }
   //   const closeRef = useRef(null);
-  //   console.log(commentsData[0]);
-  //   console.log(title, author, markdown);
-  //   console.log(comments);
+  console.log(commentsData[0]);
+  console.log(title, author, markdown);
+  console.log(comments);
   const handleClick = e => {
     const target = e.target;
     if (target === overlayRef.current) {
@@ -70,11 +71,11 @@ export const Modal = ({ id, closeModal }) => {
             {markdown}
           </Markdown>
         </div>
-        {!isLoading && <FormComment />}
+        {!loading && <FormComment />}
         <p className={cls.author}>{author}</p>
-        {!isLoading && comments.length > 0 && <Comments comments={comments} />}
-        {isLoading && <p>Загружаем данные</p>}
-        {!isLoading && comments.length === 0 && <p>Нет комментариев</p>}
+        {/* {!loading && comments.length > 0 && <Comments comments={comments} />} */}
+        {loading && <p>Загружаем данные</p>}
+        {!loading && comments.length === 0 && <p>Нет комментариев</p>}
         <button className={cls.close} onClick={() => closeModal()}>
           <CloseIcon />
         </button>
@@ -88,3 +89,16 @@ Modal.propTypes = {
   closeModal: PropTypes.func,
   id: PropTypes.string,
 };
+
+// import PropTypes from 'prop-types';
+
+// import { useCommentsData } from '../../hooks/useCommentsData';
+
+// export const Modal = ({ id }) => {
+//   const data = useCommentsData(id);
+//   console.log(data);
+// };
+
+// Modal.propTypes = {
+//   id: PropTypes.string,
+// };

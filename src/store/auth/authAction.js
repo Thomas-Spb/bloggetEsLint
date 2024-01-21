@@ -25,7 +25,7 @@ export const authLogout = error => ({
   type: AUTH_LOGOUT,
 });
 
-export const authrequestAsync = () => (dispatch, getState) => {
+export const authRequestAsync = () => (dispatch, getState) => {
   const token = getState().token.token;
   if (!token) return;
   dispatch(authRequest());

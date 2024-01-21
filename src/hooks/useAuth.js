@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { authLogout, authrequestAsync } from '../store/auth/action';
+import { authLogout, authRequestAsync } from '../store/auth/authAction';
+import { postsClear } from '../store/posts/postsActions';
+import { delToken } from '../store/tokenReducer';
 
 export const useAuth = () => {
   const auth = useSelector(state => state.auth.data);
@@ -9,9 +11,13 @@ export const useAuth = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(authrequestAsync());
+    dispatch(authRequestAsync());
   }, [token]);
 
-  const clearAuth = () => dispatch(authLogout());
+  const clearAuth = () => {
+    dispatch(authLogout());
+    dispatch(postsClear());
+    dispatch(delToken());
+  };
   return [auth, loading, clearAuth];
 };

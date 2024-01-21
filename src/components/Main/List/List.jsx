@@ -1,16 +1,23 @@
-import { useContext } from 'react';
+import { usePosts } from '../../../hooks/usePosts';
 import cls from './List.module.css';
 import Post from './Post';
-import { postsContext } from '../../../context/postsContext';
 
 export const List = () => {
-  const { posts } = useContext(postsContext);
+  const [posts, loading] = usePosts();
+  //   console.log(posts);
   const postsData = posts?.data?.children;
+
   return (
-    <ul className={cls.list}>
-      {postsData?.map(postData => (
-        <Post key={postData.data.id} postData={postData.data} />
-      ))}
-    </ul>
+    <>
+      {loading ? (
+        <h1>Загрузка постов...</h1>
+      ) : (
+        <ul className={cls.list}>
+          {postsData?.map(postData => (
+            <Post key={postData.data.id} postData={postData.data} />
+          ))}
+        </ul>
+      )}
+    </>
   );
 };
