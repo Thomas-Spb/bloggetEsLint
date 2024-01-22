@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Markdown from 'markdown-to-jsx';
 import ReactDOM from 'react-dom';
 import { useEffect, useRef } from 'react';
-// import { Comments } from '../Main/List/Post/Comments/Comments';
+import { Comments } from '../Main/List/Post/Comments/Comments';
 import { FormComment } from '../Main/List/Post/FormComment/FormComment';
 import { useCommentsData } from '../../hooks/useCommentsData';
 import { Text } from '../../UI/Text';
@@ -17,10 +17,10 @@ export const Modal = ({ id, closeModal }) => {
   //     const [commentsData, isLoading] = useCommentsData(id);
   //   }, []);
 
-  let title = 'title загрузка...';
-  let author = 'author загрузка...';
-  let markdown = 'markdown загрузка...';
-  // let title, author, markdown = ''
+  // let title = 'title загрузка...';
+  // let author = 'author загрузка...';
+  // let markdown = 'markdown загрузка...';
+  
 
   const handleClick = e => {
     const target = e.target;
@@ -65,12 +65,12 @@ export const Modal = ({ id, closeModal }) => {
                 },
               }}
             >
-              {post.markdown}
+              {post.selftext}
             </Markdown>
           </div>
           <p className={cls.author}>{post.author}</p>
           <FormComment />
-          {/* <Comments comments={comments} /> */}
+          <Comments comments={comments} />
         </>)}
         <button className={cls.close} onClick={() => closeModal()}>
           <CloseIcon />
