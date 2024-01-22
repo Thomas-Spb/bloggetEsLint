@@ -5,9 +5,10 @@ import {
 } from './postDataReducer';
 
 const initinalState = {
-  loading: false,
-  data: {},
+  post: {},
+  comments: [],
   error: '',
+  status: ''
 };
 
 export const postDataReducer = (state = initinalState, action) => {
@@ -15,16 +16,16 @@ export const postDataReducer = (state = initinalState, action) => {
     case POST_DATA:
       return {
         ...state,
-        loading: true,
-        data: {},
+        status: 'loading',
         error: '',
       };
 
     case POST_DATA_SUCCES: {
       return {
         ...state,
-        loading: false,
-        data: action.data,
+        status: 'loaded',
+        post: action.data[0],
+        comments: action.data[1],
         error: '',
       };
     }
@@ -32,7 +33,7 @@ export const postDataReducer = (state = initinalState, action) => {
     case POST_DATA_ERROR:
       return {
         ...state,
-        loading: false,
+        status: 'error',
         erorr: action.error,
       };
 

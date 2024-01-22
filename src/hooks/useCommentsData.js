@@ -4,7 +4,9 @@ import { postDataAsync } from '../store/postData/postDataReducer';
 
 export const useCommentsData = id => {
   const token = useSelector(state => state.token.token);
-  const data = useSelector(state => state.postData.data);
+  const post = useSelector(state => state.postData.post);
+  const comments  = useSelector(state => state.postData.comments );
+  const status  = useSelector(state => state.postData.status )
   //   console.log('DATA' data);
 
   const dispatch = useDispatch();
@@ -14,5 +16,5 @@ export const useCommentsData = id => {
     // console.log('dispatch postDataAsync ');
   }, [token]);
 
-  return data;
+  return [post, comments, status];
 };
