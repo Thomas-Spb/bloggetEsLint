@@ -3,11 +3,12 @@ import { ReactComponent as CloseIcon } from './img/close.svg';
 import PropTypes from 'prop-types';
 import Markdown from 'markdown-to-jsx';
 import ReactDOM from 'react-dom';
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { Comments } from '../Main/List/Post/Comments/Comments';
 import { FormComment } from '../Main/List/Post/FormComment/FormComment';
 import { useCommentsData } from '../../hooks/useCommentsData';
 import { Text } from '../../UI/Text';
+import { Preloader } from '../../UI/Preloader/Preloader';
 
 export const Modal = ({ id, closeModal }) => {
   const overlayRef = useRef(null);
@@ -22,16 +23,16 @@ export const Modal = ({ id, closeModal }) => {
   // let markdown = 'markdown загрузка...';
   
 
-  const handleClick = e => {
+  const handleClick = useCallback((e) => {
     const target = e.target;
     if (target === overlayRef.current) {
       closeModal();
     }
-  };
+  });
 
-  const handleKey = e => {
+  const handleKey = useCallback((e) => {
     if (e.key === 'Escape') closeModal();
-  };
+  });
 
   useEffect(() => {
     document.addEventListener('click', handleClick);
@@ -45,7 +46,7 @@ export const Modal = ({ id, closeModal }) => {
   return ReactDOM.createPortal(
     <div className={cls.overlay} ref={overlayRef}>
       <div className={cls.modal}>
-        {status === 'loading' && <p>Прелодер типо...</p>}
+        {status === 'loading' && <Preloader color={'#cc6633'} size={150} />}
         {status === 'error' && (
           <Text As="p" medium dsize={18}>
             Произошла ошибка загрузки поста.

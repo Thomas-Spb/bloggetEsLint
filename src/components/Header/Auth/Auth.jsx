@@ -6,7 +6,8 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { delToken } from '../../../store/tokenReducer';
 import { useAuth } from '../../../hooks/useAuth';
-import { AuthLoader } from './AuthLoader/AuthLoader';
+import { Preloader } from '../../../UI/Preloader/Preloader';
+
 
 export const Auth = () => {
   const [showLogout, setShowLogout] = useState(true);
@@ -25,7 +26,7 @@ export const Auth = () => {
   return (
     <div className={cls.container}>
       {loading ? (
-        <AuthLoader />
+        <Preloader color={'#cc6633'} size={40}/>
       ) : auth.name ? (
         <>
           <button className={cls.btn} onClick={getOut}>
