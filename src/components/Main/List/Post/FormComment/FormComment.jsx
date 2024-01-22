@@ -6,7 +6,7 @@ import { useAuth } from '../../../../../hooks/useAuth';
 
 export const FormComment = () => {
   const value = useSelector(state => state.comment.comment);
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
   const [auth] = useAuth();
 
   const handleClick = e => {

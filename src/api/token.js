@@ -1,5 +1,5 @@
 export const setToken = token => {
-  localStorage.setItem('bearer', token);
+  sessionStorage.setItem('bearer', token);
 };
 
 export const getToken = () => {

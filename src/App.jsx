@@ -6,7 +6,9 @@ import { getToken } from './api/token';
 
 function App() {
   const dispatch = useDispatch();
+
   dispatch(updateToken(getToken()));
+
   return (
     <>
       <Header />

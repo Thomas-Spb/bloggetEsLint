@@ -28,7 +28,9 @@ export const authLogout = error => ({
 export const authRequestAsync = () => (dispatch, getState) => {
   const token = getState().token.token;
   if (!token) return;
+  console.log(token);
   dispatch(authRequest());
+
   axios(`${URL_API}/api/v1/me`, {
     headers: {
       Authorization: `bearer ${token}`,
@@ -38,8 +40,11 @@ export const authRequestAsync = () => (dispatch, getState) => {
       const img = iconImg.replace(/\?.*$/, '');
       const data = { name, img };
       dispatch(authRequestSuccess(data));
-      const homeHref = window.location.href.split('#')[0];
-      window.history.replaceState(null, null, homeHref);
+      const newHref = window.location.href.split('#')[0].replace('/auth', '');
+      // console.log('newHref: ', newHref);
+      window.history.replaceState(null, null, newHref);
+      //   const homeHref = window.location.href.split('#')[0];
+      //   window.history.replaceState(null, null, homeHref);
     })
 
     .catch(err => {
