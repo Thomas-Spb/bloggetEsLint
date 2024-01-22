@@ -8,8 +8,8 @@ export const getToken = () => {
     token = new URLSearchParams(location.hash.substring(1)).get('access_token');
     setToken(token);
   }
-  if (sessionStorage.getItem('bearer')) {
-    token = sessionStorage.getItem('bearer');
+  if (localStorage.getItem('bearer')) {
+    token = localStorage.getItem('bearer');
   }
 
   return token;
