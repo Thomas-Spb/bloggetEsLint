@@ -8,6 +8,7 @@ const initinalState = {
   loading: false,
   data: {},
   error: '',
+  
 };
 
 export const postDataReducer = (state = initinalState, action) => {

@@ -8,30 +8,38 @@ import { useEffect, useRef } from 'react';
 import { FormComment } from '../Main/List/Post/FormComment/FormComment';
 import { useCommentsData } from '../../hooks/useCommentsData';
 
+
 export const Modal = ({ id, closeModal }) => {
   const overlayRef = useRef(null);
-  const commentsData = useCommentsData(id);
-  const loading = true;
-  console.log(commentsData);
+  const {commentsData, loading} = useCommentsData(id);
+  // const loading = true;
+  // console.log(commentsData);
   //   useEffect(() => {
   //     const [commentsData, isLoading] = useCommentsData(id);
   //   }, []);
 
-  let title = 'title загрузка...';
-  let author = 'author загрузка...';
-  let markdown = 'markdown загрузка...';
-
-  let comments = [];
-  if (commentsData.length > 0) {
-    title = commentsData[0]?.title;
-    author = commentsData[0]?.author;
-    markdown = commentsData[0]?.selftext;
-    comments = commentsData[1];
+  // let title = 'title загрузка...';
+  // let author = 'author загрузка...';
+  // let markdown = 'markdown загрузка...';
+  let title, author, markdown = ''
+  
+  let test ='' 
+  test = commentsData?.data[1].data.children
+  console.log(commentsData)
+  // let author = commentsData.data[0].data.children[0].data.author;
+  // data[0].data.children[0].data.author
+ 
+  let comments = [1 , 2 , 3];
+   if (commentsData?.length > 0) {
+    title = commentsData?.data[0].data.children[0].data.title;
+    author = commentsData?.data[0].data.children[0].data.author
+    markdown = commentsData?.data[0].data.children[0].data.selftext
+  //   comments = commentsData?.data[1].data.children
   }
   //   const closeRef = useRef(null);
-  console.log(commentsData[0]);
-  console.log(title, author, markdown);
-  console.log(comments);
+  // console.log(commentsData[0]);
+  // console.log(title, author, markdown)
+  // console.log(`comments ${comments}`);
   const handleClick = e => {
     const target = e.target;
     if (target === overlayRef.current) {

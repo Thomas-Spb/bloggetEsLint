@@ -31,7 +31,8 @@ export const postDataAsync = id => (dispatch, getState) => {
   })
     .then(data => {
       if (!data) return;
-      const postData = data.data[1].data.children;
+      // const postData = data.data[1].data.children;
+      const postData = data
       dispatch(postDataSuccess(postData));
     })
     .catch(err => {
