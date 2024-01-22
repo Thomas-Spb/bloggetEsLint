@@ -29,12 +29,27 @@ export const postDataAsync = id => (dispatch, getState) => {
       Authorization: `bearer ${token}`,
     },
   })
-    .then(data => {
-      if (!data) return;
-      // const postData = data.data[1].data.children;
-      const postData = data
-      dispatch(postDataSuccess(postData));
-    })
+  .then(
+    ({ data: [
+      {
+        data: {
+          children: [{ data: post }],
+        },
+      },
+      {
+        data: { children },
+      },
+    ] }) => {
+      const comments = children.map(item => item.data);
+      dispatch(postDataSuccess([post, comments]));
+    },
+  )
+    // .then(data => {
+    //   if (!data) return;
+    //   // const postData = data.data[1].data.children;
+    //   const postData = data
+    //   dispatch(postDataSuccess(postData));
+    // })
     .catch(err => {
       console.error(err);
       dispatch(postDataError(err.toString()));
