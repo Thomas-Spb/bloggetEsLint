@@ -6,7 +6,7 @@ import { tokenMiddleware } from './tokenReducer';
 import { thunk } from 'redux-thunk';
 import { authReducer } from './auth/authReducer';
 import { postsReducer } from './posts/postsReducer';
-import { postDataReducer } from './postData/postDataActions';
+import { postDataReducer } from './postData/postDataReducer';
 
 const rootReducer = combineReducers({
   token: tokenReducer,

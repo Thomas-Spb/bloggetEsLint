@@ -12,7 +12,7 @@ export const postRequest = () => ({
 
 export const postRequestSuccess = data => ({
   type: POSTS_REQUEST_SUCCES,
-  data,
+  data: data.children,
 });
 
 export const postRequestError = error => ({
@@ -34,7 +34,7 @@ export const postRequestAsync = () => (dispatch, getState) => {
       Authorization: `bearer ${token}`,
     },
   })
-    .then(data => {
+    .then(({ data }) => {
       if (!data) return;
       //   console.log(data.data);
       dispatch(postRequestSuccess(data.data));

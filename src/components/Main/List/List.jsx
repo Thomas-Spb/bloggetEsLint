@@ -4,8 +4,8 @@ import Post from './Post';
 
 export const List = () => {
   const [posts, loading] = usePosts();
-  //   console.log(posts);
-  const postsData = posts?.data?.children;
+  console.log(posts);
+  const postsData = posts;
 
   return (
     <>
