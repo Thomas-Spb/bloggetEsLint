@@ -11,6 +11,6 @@ export const usePosts = () => {
   useEffect(() => {
     dispatch(postRequestAsync());
   }, [token]);
-
+  //   console.log(posts, loading);
   return [posts, loading];
 };

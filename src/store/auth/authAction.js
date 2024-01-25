@@ -40,9 +40,9 @@ export const authRequestAsync = () => (dispatch, getState) => {
       const img = iconImg.replace(/\?.*$/, '');
       const data = { name, img };
       dispatch(authRequestSuccess(data));
-      const newHref = window.location.href.split('#')[0].replace('/auth', '');
-      // console.log('newHref: ', newHref);
-      window.history.replaceState(null, null, newHref);
+      //   const newHref = window.location.href.split('#')[0].replace('/auth', '');
+      //   // console.log('newHref: ', newHref);
+      //   window.history.replaceState(null, null, newHref);
       //   const homeHref = window.location.href.split('#')[0];
       //   window.history.replaceState(null, null, homeHref);
     })
