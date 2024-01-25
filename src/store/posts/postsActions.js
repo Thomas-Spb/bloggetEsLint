@@ -47,7 +47,7 @@ export const postRequestAsync = () => (dispatch, getState) => {
     },
   })
     .then(({ data }) => {
-      if (!data) return;
+      //   if (!data) return;
       //   console.log(after);
 
       if (after) {

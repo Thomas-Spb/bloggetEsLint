@@ -7,6 +7,7 @@ export const usePosts = () => {
   const posts = useSelector(state => state.posts.data);
   const loading = useSelector(state => state.posts.loading);
   const dispatch = useDispatch();
+  console.log('posts', posts);
 
   useEffect(() => {
     dispatch(postRequestAsync());

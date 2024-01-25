@@ -21,16 +21,15 @@ export const Modal = ({ id, closeModal }) => {
   // let title = 'title загрузка...';
   // let author = 'author загрузка...';
   // let markdown = 'markdown загрузка...';
-  
 
-  const handleClick = useCallback((e) => {
+  const handleClick = useCallback(e => {
     const target = e.target;
     if (target === overlayRef.current) {
       closeModal();
     }
   });
 
-  const handleKey = useCallback((e) => {
+  const handleKey = useCallback(e => {
     if (e.key === 'Escape') closeModal();
   });
 
@@ -52,27 +51,29 @@ export const Modal = ({ id, closeModal }) => {
             Произошла ошибка загрузки поста.
           </Text>
         )}
-        {status === 'loaded' && (<>
-          <h2 className={cls.title}>{post.title}</h2>
-          <div className={cls.content}>
-            <Markdown
-              options={{
-                overrides: {
-                  a: {
-                    props: {
-                      target: '_blank',
+        {status === 'loaded' && (
+          <>
+            <h2 className={cls.title}>{post.title}</h2>
+            <div className={cls.content}>
+              <Markdown
+                options={{
+                  overrides: {
+                    a: {
+                      props: {
+                        target: '_blank',
+                      },
                     },
                   },
-                },
-              }}
-            >
-              {post.selftext}
-            </Markdown>
-          </div>
-          <p className={cls.author}>{post.author}</p>
-          <FormComment />
-          <Comments comments={comments} />
-        </>)}
+                }}
+              >
+                {post.selftext}
+              </Markdown>
+            </div>
+            <p className={cls.author}>{post.author}</p>
+            <FormComment />
+            <Comments comments={comments} />
+          </>
+        )}
         <button className={cls.close} onClick={() => closeModal()}>
           <CloseIcon />
         </button>
