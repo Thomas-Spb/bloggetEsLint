@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { authLogout, authRequestAsync } from '../store/auth/authAction';
-import { postsClear } from '../store/posts/postsActions';
 import { delToken } from '../store/tokenReducer';
 
 export const useAuth = () => {
@@ -16,7 +15,6 @@ export const useAuth = () => {
 
   const clearAuth = () => {
     dispatch(authLogout());
-    dispatch(postsClear());
     dispatch(delToken());
   };
   return [auth, loading, clearAuth];

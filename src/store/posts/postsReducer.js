@@ -1,5 +1,5 @@
 import {
-  POSTS_CLEAR,
+  CHANGE_PAGE,
   POSTS_REQUEST,
   POSTS_REQUEST_ERROR,
   POSTS_REQUEST_SUCCES,
@@ -20,7 +20,6 @@ export const postsReducer = (state = initinalState, action) => {
       return {
         ...state,
         loading: true,
-        data: [],
         error: '',
       };
 
@@ -32,6 +31,7 @@ export const postsReducer = (state = initinalState, action) => {
         error: '',
         after: action.after,
         isLast: !action.after,
+        page: '',
       };
     }
 
@@ -41,7 +41,7 @@ export const postsReducer = (state = initinalState, action) => {
         ...state,
         loading: false,
         // data: [Object.keys(...state.posts), ...action.data],
-        data: [...state.posts, ...action.data],
+        data: [...state.data, ...action.data],
         error: '',
         after: action.after,
         isLast: !action.after,
@@ -55,12 +55,12 @@ export const postsReducer = (state = initinalState, action) => {
         erorr: action.error,
       };
 
-    case POSTS_CLEAR:
+    case CHANGE_PAGE:
       return {
         ...state,
-        loading: false,
-        data: [],
-        erorr: action.error,
+        page: action.page,
+        after: action.after,
+        isLast: !action.after,
       };
 
     default:

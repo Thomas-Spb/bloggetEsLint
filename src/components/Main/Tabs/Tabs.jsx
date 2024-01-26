@@ -10,18 +10,20 @@ import { ReactComponent as HotIcon } from './img/hot.svg';
 import { ReactComponent as BestIcon } from './img/best.svg';
 import { debounceRaf } from '../../../utils/debounce';
 import { Text } from '../../../UI/Text';
+import { useNavigate } from 'react-router-dom';
 
 const LIST = [
-  { value: 'Главная', Icon: HomeIcon },
-  { value: 'Топ', Icon: TopIcon },
-  { value: 'Лучшие', Icon: BestIcon },
-  { value: 'Горячие', Icon: HotIcon },
+  { value: 'Главная', Icon: HomeIcon, link: 'rising' },
+  { value: 'Топ', Icon: TopIcon, link: 'top' },
+  { value: 'Лучшие', Icon: BestIcon, link: 'best' },
+  { value: 'Горячие', Icon: HotIcon, link: 'hot' },
 ].map(assignId);
 
-export const Tabs = ({ list, setList }) => {
+export const Tabs = () => {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const [isDropdown, setIsDropdown] = useState(true);
-  const [tab, setTab] = useState('Menu');
+  const [tab, setTab] = useState('Главная');
+  const navigate = useNavigate();
 
   const handleResize = () => {
     if (document.documentElement.clientWidth < 768) {
@@ -55,12 +57,13 @@ export const Tabs = ({ list, setList }) => {
       )}
       {(isDropDownOpen || !isDropdown) && (
         <ul className={cls.list} onClick={() => setIsDropDownOpen(false)}>
-          {LIST.map(({ value, id, Icon }) => (
+          {LIST.map(({ value, link, id, Icon }) => (
             <Text As="li" bold className={cls.item} key={id}>
               <button
                 className={cls.btn}
                 onClick={() => {
                   setTab(value);
+                  navigate(`/category/${link}`);
                 }}
               >
                 {value}

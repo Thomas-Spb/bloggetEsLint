@@ -5,7 +5,7 @@ export const POSTS_REQUEST = 'POSTS_REQUEST';
 export const POSTS_REQUEST_SUCCES = 'POSTS_REQUEST_SUCCES';
 export const POSTS_REQUEST_SUCCES_AFTER = 'POSTS_REQUEST_SUCCES_AFTER';
 export const POSTS_REQUEST_ERROR = 'POSTS_REQUEST_ERROR';
-export const POSTS_CLEAR = 'POSTS_CLEAR';
+export const CHANGE_PAGE = 'CHANGE_PAGE';
 
 export const postRequest = () => ({
   type: POSTS_REQUEST,
@@ -27,21 +27,29 @@ export const postRequestError = error => ({
   type: POSTS_REQUEST_ERROR,
   error,
 });
-export const postsClear = error => ({
-  type: POSTS_CLEAR,
-  error,
+
+export const changePage = page => ({
+  type: CHANGE_PAGE,
+  page,
 });
 
-export const postRequestAsync = () => (dispatch, getState) => {
+export const postRequestAsync = newPage => (dispatch, getState) => {
+  let page = getState().posts.page;
+  if (newPage) {
+    page = newPage;
+    dispatch(changePage(page));
+  }
+
   const token = getState().token.token;
   const after = getState().posts.after;
   const loading = getState().posts.loading;
   const isLast = getState().posts.isLast;
+
   if (!token || loading || isLast) return;
 
   dispatch(postRequest());
 
-  axios(`${URL_API}/best?limit=10&${after ? `after=${after}` : ''}`, {
+  axios(`${URL_API}/${page}?limit=10&${after ? `after=${after}` : ''}`, {
     headers: {
       Authorization: `bearer ${token}`,
     },
