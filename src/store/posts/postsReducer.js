@@ -59,9 +59,10 @@ export const postsReducer = (state = initinalState, action) => {
     case CHANGE_PAGE:
       return {
         ...state,
+        posts: [],
         page: action.page,
-        after: action.after,
-        isLast: !action.after,
+        after: '',
+        isLast: false,
       };
 
     default:
