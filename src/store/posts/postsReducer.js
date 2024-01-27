@@ -37,7 +37,6 @@ export const postsReducer = (state = initinalState, action) => {
     }
 
     case POSTS_REQUEST_SUCCES_AFTER: {
-      console.log(...state);
       return {
         ...state,
         loading: false,
