@@ -2,9 +2,10 @@ import { useEffect, useRef } from 'react';
 import cls from './List.module.css';
 import Post from './Post';
 import { useDispatch, useSelector } from 'react-redux';
-import { postRequestAsync } from '../../../store/posts/postsActions';
+
 import { Preloader } from '../../../UI/Preloader/Preloader';
 import { Outlet, useParams } from 'react-router-dom';
+import { postRequestAsync } from '../../../store/posts/postsActions';
 
 export const List = () => {
   const posts = useSelector(state => state.posts.data);
