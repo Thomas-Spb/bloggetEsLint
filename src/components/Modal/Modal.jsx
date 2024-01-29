@@ -28,12 +28,12 @@ export const Modal = () => {
   const handleClick = useCallback(e => {
     const target = e.target;
     if (target === overlayRef.current) {
-      navigate(`category/${page}`);
+      navigate(`/category/${page}`);
     }
   });
 
   const handleKey = useCallback(e => {
-    if (e.key === 'Escape') navigate(`category/${page}`);
+    if (e.key === 'Escape') navigate(`/category/${page}`);
   });
 
   useEffect(() => {
@@ -80,7 +80,7 @@ export const Modal = () => {
         <button
           className={cls.close}
           onClick={() => {
-            navigate(`category/${page}`);
+            navigate(`/category/${page}`);
           }}
         >
           <CloseIcon />
