@@ -17,14 +17,6 @@ export const Modal = () => {
   const overlayRef = useRef(null);
   const [post, comments, status] = useCommentsData(id);
 
-  //   useEffect(() => {
-  //     const [commentsData, isLoading] = useCommentsData(id);
-  //   }, []);
-
-  // let title = 'title загрузка...';
-  // let author = 'author загрузка...';
-  // let markdown = 'markdown загрузка...';
-
   const handleClick = useCallback(e => {
     const target = e.target;
     if (target === overlayRef.current) {
@@ -92,19 +84,6 @@ export const Modal = () => {
 };
 
 Modal.propTypes = {
-  closeModal: PropTypes.func,
   id: PropTypes.string,
+  closeModal: PropTypes.func,
 };
-
-// import PropTypes from 'prop-types';
-
-// import { useCommentsData } from '../../hooks/useCommentsData';
-
-// export const Modal = ({ id }) => {
-//   const data = useCommentsData(id);
-//   console.log(data);
-// };
-
-// Modal.propTypes = {
-//   id: PropTypes.string,
-// };

@@ -14,7 +14,11 @@ export const Main = () => (
         <Route path="/" element={<StartPage />} />
         <Route path="/auth" element={<StartPage />} />
         <Route path="/category/:page" element={<List />}>
+<<<<<<< HEAD
           <Route path="post/:id" element={<Modal />} />
+=======
+          <Route path="post/:id" element={<Modal />}></Route>
+>>>>>>> e71a121a519f6a6768c0d30ae6dc0ce8814072e2
         </Route>
         <Route path="*" element={<ErrorPage />} />
       </Routes>
