@@ -17,15 +17,23 @@ export const Modal = () => {
   const overlayRef = useRef(null);
   const [post, comments, status] = useCommentsData(id);
 
+  //   useEffect(() => {
+  //     const [commentsData, isLoading] = useCommentsData(id);
+  //   }, []);
+
+  // let title = 'title загрузка...';
+  // let author = 'author загрузка...';
+  // let markdown = 'markdown загрузка...';
+
   const handleClick = useCallback(e => {
     const target = e.target;
     if (target === overlayRef.current) {
-      navigate(`/category/${page}`);
+      navigate(`category/${page}`);
     }
   });
 
   const handleKey = useCallback(e => {
-    if (e.key === 'Escape') navigate(`/category/${page}`);
+    if (e.key === 'Escape') navigate(`category/${page}`);
   });
 
   useEffect(() => {
@@ -72,7 +80,7 @@ export const Modal = () => {
         <button
           className={cls.close}
           onClick={() => {
-            navigate(`/category/${page}`);
+            navigate(`category/${page}`);
           }}
         >
           <CloseIcon />
@@ -84,6 +92,19 @@ export const Modal = () => {
 };
 
 Modal.propTypes = {
-  id: PropTypes.string,
   closeModal: PropTypes.func,
+  id: PropTypes.string,
 };
+
+// import PropTypes from 'prop-types';
+
+// import { useCommentsData } from '../../hooks/useCommentsData';
+
+// export const Modal = ({ id }) => {
+//   const data = useCommentsData(id);
+//   console.log(data);
+// };
+
+// Modal.propTypes = {
+//   id: PropTypes.string,
+// };

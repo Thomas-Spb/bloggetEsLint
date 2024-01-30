@@ -59,11 +59,11 @@ export const postRequestAsync = newPage => (dispatch, getState) => {
       //   console.log(after);
 
       if (after) {
-        // console.log('after', data.data);
+        console.log('after', data.data);
         dispatch(postRequestSuccessAfter(data.data));
       } else {
         console.log('no-after', data.data);
-        // dispatch(postRequestSuccess(data.data));
+        dispatch(postRequestSuccess(data.data));
       }
     })
     .catch(err => {
